@@ -1,5 +1,6 @@
 # new-web
-
+用户名：admin
+密码：admin123
 ## Project setup
 ```
 npm install
@@ -23,5 +24,3 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-用户名：admin
-密码：admin123
