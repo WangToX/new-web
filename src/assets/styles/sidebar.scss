@@ -1,0 +1,18 @@
+#app {
+  .main-container{
+    margin-left: 200px;
+    min-height: 100%;
+  }
+  .sidebar-container {
+    width: 200px;
+    height: 100%;
+    background-color: $base-menu-background;
+    position: fixed;
+    .el-menu {
+      border: none;
+    }
+    .svg-icon {
+      margin-right: 15px;
+    }
+  }
+}
