@@ -2,12 +2,14 @@
 <template>
   <div>
     <!-- logo -->
-    <logo></logo>
+    <logo :collapse="isCollapse"></logo>
     <!-- el-scrollbar包裹滚动区域 -->
     <el-scrollbar>
       <!-- element-Ui组件NavMenu导航菜单 -->
       <!-- default-active：当前激活菜单的index；unique-opened：是否只保持一个子菜单的展开；active-text-color：当前激活菜单的文字颜色 -->
+      <!-- collapse：是否水平折叠收起菜单（仅在 mode 为 vertical 时可用，即菜单为垂直模式） -->
       <el-menu
+        :collapse="isCollapse"
         default-active='2'
         class='el-menu-vertical-demo'
         :background-color='variables.menuBackground'
@@ -34,6 +36,11 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'SideBar',
   components: { Logo, SidebarItem },
+  data () {
+    return {
+      isCollapse: true // 是否折叠侧边菜单栏
+    }
+  },
   computed: {
     ...mapGetters(['sidebarRouters']),
     variables () {

@@ -1,6 +1,6 @@
 <!-- 整体布局 -->
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :class="ObjClass">
     <!-- 左侧菜单 -->
     <side-bar class="sidebar-container"></side-bar>
     <div class="main-container">
@@ -24,6 +24,14 @@ import AppMain from '@/layout/components/AppMain'
 export default {
   name: 'layout',
   components: { SideBar, NavBar, TagsView, AppMain },
+  computed: {
+    // 折叠后侧边栏的样式
+    ObjClass () {
+      return {
+        hideSidebar: true
+      }
+    }
+  },
   mounted () {
     console.log('getToken:', this.$store.state.user.token)
   }

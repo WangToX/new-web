@@ -4,31 +4,31 @@ import store from './store'
 import { getToken } from '@/utils/auth'
 import { Message } from 'element-ui'
 
-const whiteList = ['/login']
+const whiteList = ['/login'] // 白名单，不需要登录就可以访问
+// 前置守卫
 router.beforeEach((to, from, next) => {
   console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$roles:', store.getters.roles)
-  if (getToken()) {
-    // 如果能拿到token
-    // 要去登录页则直接跳到,'/'
-    if (to.path === '/login') {
+  if (getToken()) { // 如果能拿到token，说明登录成功
+    if (to.path === '/login') { // 要去登录页则直接跳到,'/'
       next({ path: '/' }) // 路由跳转，走beforeEach，再次判断
     } else {
       // 如果要去除login以外的其他页面，再次进行判断,是否获取到用户的相关信息
       if (store.getters.roles.length === 0) {
         console.log('没有用户信息')
+        // 虽然登陆了，但是没有用户信息，则重新获取用户信息
         store.dispatch('GetInfo').then((res) => {
-          // console.log('GetInfo:', res)
+          console.log('GetInfo:', res)
           store.dispatch('GenerateRoutes').then(accessRoutes => {
             console.log('???????????????????????accessRoutes:', accessRoutes)
             accessRoutes.forEach(route => {
-              router.addRoute(route)
+              router.addRoute(route) // 动态添加可访问路由表
             })
             next()
           })
         }).catch((err) => {
           Message.error(err)
         })
-      } else {
+      } else { // 登陆成功，且有用户的相关信息，则说明动态路由已加载好了，直接往下走
         next()
       }
     }

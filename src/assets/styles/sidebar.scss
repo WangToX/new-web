@@ -1,10 +1,10 @@
 #app {
   .main-container{
-    margin-left: 200px;
+    margin-left: 200px; // 留出侧边菜单栏的宽度
     min-height: 100%;
   }
   .sidebar-container {
-    width: 200px;
+    width: 200px; // 侧边菜单栏的宽度
     height: 100%;
     background-color: $base-menu-background;
     position: fixed;
@@ -13,6 +13,27 @@
     }
     .svg-icon {
       margin-right: 15px;
+    }
+  }
+  // 折叠侧边菜单栏后的样式
+  .hideSidebar{
+    .main-container{
+      margin-left: 54px;
+    }
+    .sidebar-container {
+      width: 54px;
+    }
+    .el-menu--collapse {
+      .el-submenu {
+        .el-submenu__title {
+          span {
+            display: none; // 隐藏文字
+          }
+          .el-submenu__icon-arrow {
+            display: none; // 隐藏箭头
+          }
+        }
+      }
     }
   }
 }
