@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navbar">
-      <hamburger class="hamburger-container" @toggleClick="toggleSideBar"></hamburger>
+      <hamburger class="hamburger-container" @toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
       <breadcrumb class="breadcrumb-container"></breadcrumb>
       <div class="right-menu">right</div>
     </div>
@@ -13,6 +13,8 @@
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import TopNav from '@/components/TopNav'
+import store from '@/store'
+import { mapGetters } from 'vuex'
 export default {
   name: 'NavBar',
   components: {
@@ -20,9 +22,13 @@ export default {
     Breadcrumb,
     TopNav
   },
+  computed: {
+    ...mapGetters(['sidebar'])
+  },
   methods: {
     toggleSideBar () {
       console.log('1')
+      store.dispatch('app/toggleSideBar')
     }
   }
 }

@@ -1,9 +1,11 @@
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+    <!-- 折叠时，如果有logo则显示logo，没有则显示title -->
     <router-link v-if="collapse" to="/" class="sidebar-logo-link">
       <img v-if="logo" :src="logo" class="sidebar-logo-img">
       <h1 v-else class="sidebar-logo-title">{{title}}</h1>
     </router-link>
+    <!-- 不折叠，显示logo和title -->
     <router-link v-else to="/" class="sidebar-logo-link">
       <img :src="logo" class="sidebar-logo-img">
       <h1 class="sidebar-logo-title">{{title}}</h1>

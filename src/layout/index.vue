@@ -21,14 +21,18 @@ import SideBar from '@/layout/components/SideBar'
 import NavBar from '@/layout/components/NavBar'
 import TagsView from '@/layout/components/TagsView'
 import AppMain from '@/layout/components/AppMain'
+import { mapState } from 'vuex'
 export default {
   name: 'layout',
   components: { SideBar, NavBar, TagsView, AppMain },
   computed: {
+    ...mapState({
+      sidebar: state => state.app.sidebar
+    }),
     // 折叠后侧边栏的样式
     ObjClass () {
       return {
-        hideSidebar: true
+        hideSidebar: !this.sidebar.opened
       }
     }
   },

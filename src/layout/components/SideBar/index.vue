@@ -36,15 +36,14 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'SideBar',
   components: { Logo, SidebarItem },
-  data () {
-    return {
-      isCollapse: true // 是否折叠侧边菜单栏
-    }
-  },
   computed: {
-    ...mapGetters(['sidebarRouters']),
+    ...mapGetters(['sidebarRouters', 'sidebar']),
     variables () {
       return variables
+    },
+    // 是否折叠侧边菜单栏
+    isCollapse () {
+      return !this.sidebar.opened
     }
   },
   methods: {
