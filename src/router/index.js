@@ -35,4 +35,10 @@ const router = new VueRouter({
   routes: constantRoute
 })
 
+// 解决（面包屑）重复点击相同路由报错问题
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
+
 export default router

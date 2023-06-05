@@ -48,7 +48,7 @@ export default {
     cursor: pointer;
   }
   .breadcrumb-container{
-    line-height: 46px;
+    line-height: 50px;
     height: 100%;
     float: left;
     margin-left: 8px;

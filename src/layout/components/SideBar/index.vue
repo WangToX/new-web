@@ -10,7 +10,7 @@
       <!-- collapse：是否水平折叠收起菜单（仅在 mode 为 vertical 时可用，即菜单为垂直模式） -->
       <el-menu
         :collapse="isCollapse"
-        default-active='2'
+        :default-active='activeMenu'
         class='el-menu-vertical-demo'
         :background-color='variables.menuBackground'
         text-color='#fff'
@@ -44,6 +44,10 @@ export default {
     // 是否折叠侧边菜单栏
     isCollapse () {
       return !this.sidebar.opened
+    },
+    // 默认菜单高亮显示
+    activeMenu () {
+      return this.$route.path
     }
   },
   methods: {

@@ -1,7 +1,8 @@
 const app = {
   state: {
     sidebar: {
-      opened: false
+      // 默认侧边栏展开
+      opened: true
     }
   },
   mutations: {

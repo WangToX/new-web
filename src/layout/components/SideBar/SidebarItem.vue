@@ -1,7 +1,7 @@
 <!-- 菜单项的递归实现 -->
 <template>
   <div v-if="!item.hidden">
-    <template v-if="hasOneShowChild(item.children, item)">
+    <template v-if="hasOneShowChild(item.children, item) && !item.alwaysShow">
       <!-- AppLink组件：点击跳转页面 -->
       <app-link :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">

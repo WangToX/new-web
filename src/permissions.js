@@ -23,7 +23,7 @@ router.beforeEach((to, from, next) => {
             accessRoutes.forEach(route => {
               router.addRoute(route) // 动态添加可访问路由表
             })
-            next()
+            next({ ...to }) // 解决刷新白屏的问题
           })
         }).catch((err) => {
           Message.error(err)
