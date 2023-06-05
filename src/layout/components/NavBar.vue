@@ -1,6 +1,6 @@
 <template>
   <div>
-    NavBar
+    NavBar---test
   </div>
 </template>
 
